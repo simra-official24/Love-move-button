@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yes or No</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: black;
+        background-image: url(/R.gif);
+    }
+
+    .container {
+        text-align: center;
+        padding: 20px;
+        background-color: rgb(49, 45, 45);
+    }
+
+    h1 {
+        color:white;
+    }
+
+    h2 {
+        color: rgb(204, 172, 133);
+    }
+
+    img {
+        width: 200px;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .hidden {
+        display: none;
+    }
+    #yesButton, #noButton{
+    background: white;
+    font-size: 18px;
+    padding:8px 16px;
+    border:none;
+    border-radius:5px;
+    }
+
+    #yesButton:hover, #noButton:hover{
+        background:  rgb(204, 172, 133);
+        
+        cursor: pointer;
+    padding:8px 16px;
+    border:none;
+    border-radius:5px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Abhi tk tumne iftaari ni krwai🥺</h1>
+    <h2>Tw phr aj karwa rhi?</h2>
+    <img id="image" src="/code.gif" alt="Placeholder Image"> <br>
+    <br><button id="yesButton" >Yes</button>
+    <button id="noButton">No</button>
+    <button id="nButton" onmouseover="moveButton()">No</button>
+</div>
+
+<script>
+    
+    let clickCount = 0;
+
+    nButton.style.display = "none";
+
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    
+    const heading = document.querySelector('h1');
+    const subheading = document.querySelector('h2');
+    const image = document.getElementById('image');
+
+    const imageUrls = [
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWZsMDB1dGI5N2djNjk4OHE4bDRudzd6YmIzZ3IyY2oxaGczZTZwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gDfteqLchLcRTtjAD7/giphy.gif',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTltY3oxb2hxa3g1bmQ1cmthYm5lcnBpMWM1ZWdpbXhtaWFobTRjOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M90mJvfWfd5mbUuULX/giphy.gif',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExemdpY2Q0aWxiajNxcDlyeXN2dHYxem1mcnh1cXI0a2IwOXN1eDEyZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vFycqTbKIxXiKyZvEs/giphy.gif',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Ntb2dtdmtvZzB1d2IweWUxNHEzcnk4aDRvczQ0Z3I0YmUxZXAycyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nFlide4XZbgvUHBhRD/giphy.gif',
+        'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnVzZ3U1N2JodG1rMTU5dHVhOHYzM3liaDF3eDR1eGJ1N3YweWgyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9X8UlqKhaSPz4n7BkW/giphy.gif',
+        
+    ];
+    function moveButton() {
+      const newX = Math.floor(Math.random() * (window.innerWidth - nButton.offsetWidth));
+      const newY = Math.floor(Math.random() * (window.innerHeight - nButton.offsetHeight));
+      nButton.style.position = 'absolute';
+      nButton.style.left = newX + 'px';
+      nButton.style.top = newY + 'px';
+    }
+
+    noButton.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount < 5) {
+            heading.textContent = "Soch l0 acche se";
+            subheading.textContent = `Tw ab krwa rhi ya ni?`;
+            nButton.style.display = "none";
+            image.src = imageUrls[clickCount ];
+        }
+        if (clickCount === 4) {
+           
+            heading.textContent = "How about now?";
+            subheading.textContent = `Ab maan bhi jao`;
+            noButton.style.display = "none"; 
+            nButton.style.display = "inline-block"; 
+            yesButton.style.display = "inline-block";
+            
+          
+        }
+    });
+
+    yesButton.addEventListener('click', () => {
+        heading.textContent = "	Hehe I knew it!";
+        subheading.textContent = "I love you";
+          image.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGM3MW92Zms4a3ZtamxibnZidHB1d3FoMWVzdmE3bzhxZWppaWN2OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bA5cblwksWXDOwSzUI/giphy.gif";
+        yesButton.disabled = true;
+        noButton.disabled = true;
+        yesButton.style.display = "none";
+        noButton.style.display = "none";
+        nButton.style.display = "none";
+    });
+</script>
+
+</body>
+</html>
